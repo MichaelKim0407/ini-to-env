@@ -1,4 +1,4 @@
-__version__ = '1.0dev0'
+__version__ = '1.0'
 
 import os as _os
 from configparser import (
