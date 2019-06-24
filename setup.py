@@ -2,6 +2,14 @@ from setuptools import setup
 
 from ini2env import __version__
 
+extra_test = [
+    'pytest>=4',
+    'pytest-cov>=2',
+]
+extra_dev = [
+    *extra_test,
+]
+
 setup(
     name='ini-to-env',
     version=__version__,
@@ -12,6 +20,11 @@ setup(
     author_email='mkim0407@gmail.com',
 
     py_modules=['ini2env'],
+
+    extras_require={
+        'test': extra_test,
+        'dev': extra_dev,
+    },
 
     classifiers=[
         'Intended Audience :: Developers',
