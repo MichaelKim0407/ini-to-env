@@ -10,6 +10,11 @@ extra_dev = [
     *extra_test,
 ]
 
+extra_ci = [
+    *extra_test,
+    'python-coveralls',
+]
+
 setup(
     name='ini-to-env',
     version=__version__,
@@ -24,6 +29,8 @@ setup(
     extras_require={
         'test': extra_test,
         'dev': extra_dev,
+
+        'ci': extra_ci,
     },
 
     entry_points={
