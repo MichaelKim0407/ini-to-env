@@ -26,6 +26,12 @@ setup(
         'dev': extra_dev,
     },
 
+    entry_points={
+        'console_scripts': [
+            'ini2env=ini2env:cmd',
+        ],
+    },
+
     classifiers=[
         'Intended Audience :: Developers',
 

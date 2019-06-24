@@ -32,3 +32,19 @@ def load(*filenames):
     loader = Loader()
     loader.add_files(*filenames)
     loader.load()
+
+
+def cmd(args=None):
+    import sys
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+    parser.add_argument('file', nargs='+', type=str, help='ini file(s) to load')
+    args = parser.parse_args(args=args)
+
+    loader = Loader()
+    loader.add_files(*args.file)
+
+    if sys.stdout.isatty():
+        print('# source this output to export environment variables', file=sys.stderr)
+    for k, v in loader:
+        print('export {}={}'.format(k, v))
