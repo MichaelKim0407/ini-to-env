@@ -11,10 +11,11 @@ class Loader(object):
         self.conf = _ConfigParser()
         self.conf.optionxform = str  # preserve case
 
-    def add_file(self, filename):
-        with open(filename):  # raise FileNotFoundError
-            pass
-        self.conf.read(filename)
+    def add_files(self, *filenames):
+        for filename in filenames:
+            with open(filename):  # raise FileNotFoundError
+                pass
+        self.conf.read(filenames)
 
     def __iter__(self):
         for section in self.conf:
@@ -27,7 +28,7 @@ class Loader(object):
             target.setdefault(k, v)
 
 
-def load(filename):
+def load(*filenames):
     loader = Loader()
-    loader.add_file(filename)
+    loader.add_files(*filenames)
     loader.load()
